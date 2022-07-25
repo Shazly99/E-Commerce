@@ -1,0 +1,20 @@
+<div style="margin-top: 100px ;">
+    <div *ngIf="!loaing" >
+        <div class="form-group w-25 mt-5">
+            <app-select [categories]="categories" (selectedValue)="filterCategory($event)" ></app-select>
+        </div>
+        <div *ngIf="error" class="mt-2  alert alert-primary alert-dismissible fade show" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>   
+            <strong>Ops !</strong> {{error}}
+        </div>
+        <div class="row mt-5 ">
+            <div class="detalis col-md-3 mt-3 " *ngFor="let item of Product"  >
+                <app-box [item]="item" (data)="addToCard($event)"  ></app-box>
+            </div>
+        </div>
+    </div>
+    
+     <div  *ngIf="loaing"  class=" loaing d-flex justify-content-center align-items-centerw-100 m-auto p-5 ">
+        <app-spiner></app-spiner>
+     </div>
+</div> 

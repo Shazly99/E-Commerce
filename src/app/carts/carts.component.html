@@ -1,0 +1,56 @@
+<div class="card MT shadow-lg">
+    <h1 class="fw-bolder text-danger">Shopping Card</h1>
+    <div style="margin-bottom: 20px;" class="d-flex  justify-content-between align-items-center"> 
+        <p class="mt-2">you have <b class="text-danger">{{countItem}}</b> item in your card</p>
+        <button class="Clear" (click)="clearCard()">Clear Shopping Cart</button>
+    </div>
+    <table class="  table-responsive table-hover text-center">
+        <thead >
+          <tr class="p-5  ">
+            <th>product picture</th>
+            <th scope="col-5  " class="col-4 ">Name</th>
+            <th scope="col">Price </th>
+            <th scope="col">Quentity</th>
+            <th scope="col">Total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr   *ngFor="let prodauctData of prodauctData; let i=index">
+                
+                <td><img src="{{prodauctData.data.image}} " alt="" srcset=""></td>
+                <td>{{ prodauctData.data.title}}</td>
+                <td>{{ prodauctData.data.price}} L.E</td>
+ 
+                <td>
+                    <div style="width: 50%;" class=" d-flex justify-content-between m-auto  ">
+                        <button  class="btn btn-dark text-white" (click)="plus(i)">+</button>
+                        <input [(ngModel)]="prodauctData.quantity" (change)="detectchange()" value="{{prodauctData.quantity}}"  type="number" min="1" class="w-50 form-control">
+                        <button class="btn btn-dark text-white" (click)="minus(i)">-</button>
+                    </div>
+                </td>
+                <td>{{ prodauctData.data.price*prodauctData.quantity}} L.E</td>
+                <td>
+                    <button class=" btn btn-danger" (click)="deleteItem(i)">Delete</button>
+                </td>
+          </tr>
+
+ 
+        </tbody>
+        <tfoot class="mt-4  p-4">
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Total : {{totalPrice}}</th>
+            <th> 
+                 <button (click)="addCardFromAPI()" class="order p-2">Order Now</button> 
+            </th>
+        </tfoot>
+      </table>
+      <div *ngIf="sucsess" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Well Done!</strong> has been sent successfully your Order
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+</div>
+

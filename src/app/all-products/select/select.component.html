@@ -1,0 +1,6 @@
+<label class="fw-bolder" for="">Category : </label>
+<select class="mt-2 form-control" (change)="ChangeData($event)">
+    <option   value="all" selected>All</option>
+    <option   value="all"  selected>All </option>
+    <option  *ngFor="let item of categories" value="{{item}}">{{item}}</option>
+</select>

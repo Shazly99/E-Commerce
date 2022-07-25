@@ -1,0 +1,42 @@
+img{
+    width: 200px;
+    height: 200px;
+}
+.contentheader{
+    width: 100% !important;
+    height: 50px !important;
+
+ }
+
+ .contentdec{
+    width: 100% !important;
+    height: 100px !important;
+ }
+
+ .box{
+    transition: all 0.5s;
+ }
+ .box:hover{
+    box-shadow:  0 .5rem 1rem rgba(0,0,0,.15)!important;
+    transform: translateY(-15px);
+ }
+ 
+ .lead{
+    line-height: 1;
+    font-size: 15px;
+ }
+
+ .loaing{
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: black;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ .detalis{
+   cursor: pointer;
+ }

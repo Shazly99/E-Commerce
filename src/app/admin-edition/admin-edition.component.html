@@ -1,0 +1,165 @@
+<div class="card MT shadow-lg">
+  <h1 class="fw-bolder text-danger">Shopping Card</h1>
+  <div style="margin-bottom: 20px;" class="d-flex  justify-content-between align-items-center">
+    <p class="mt-2">you have <b class="text-danger">{{prodauctData.length}}</b> item in your card</p>
+    <div>
+      <!-- Button trigger modal -->
+      <button (click)="clearForm()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Add new product
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Update product</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="" [formGroup]="formProduect">
+
+                <div class="d-flex justify-content-between">
+                  <div class="form-group">
+                    <label class="fw-bolder">Title</label>
+                    <input formControlName="title" type="text" name="" id="" class="form-control" placeholder=""
+                      aria-describedby="helpId">
+
+                  </div>
+                  <div class="form-group">
+                    <label class="fw-bolder">Price</label>
+                    <input formControlName="price" type="number" name="" id="" class="form-control" placeholder=""
+                      aria-describedby="helpId">
+                  </div>
+                  <div style="margin-top: -10px !important;" class="form-group w-25">
+                    <label class="fw-bolder">Categories</label>
+                    <select class="mt-2 form-control" (change)="getSelectCategorie($event)">
+                      <option *ngFor="let item of categories">{{item}}</option>
+                    </select>
+                  </div>
+
+                </div>
+                <div class="mt-2 d-flex justify-content-between">
+                  <div style="width: 350px !important;" class="my-3 d-flex flex-column  ">
+                    <div>
+                      <label class="fw-bolder">Image</label>
+                      <input class="form-control" (change)="getImagePath($event)" type="file" id="input1" multiple>
+                    </div>
+                    <img  *ngIf="base64" class="mt-3" width="200" height="200" src="{{base64}}"
+                      alt="" srcset="">
+
+                  </div>
+                  <div class="my-3 w-50">
+                    <label for="exampleFormControlTextarea1" class="form-label fw-bolder">Decoration</label>
+                    <textarea formControlName="description" class="form-control" id="exampleFormControlTextarea1"
+                      rows="3"></textarea>
+
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" (click)="getNewProduct(formProduect)" [disabled]="formProduect.invalid">Add Product</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <table class="  table-responsive table-hover text-center">
+    <thead>
+      <tr class="p-5  ">
+        <th>product picture</th>
+        <th scope="col-5  " class="col-4 ">Name</th>
+        <th scope="col-5  " class="col-4 ">Category</th>
+        <th scope="col">Price </th>
+        <th scope="col"></th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prodauctData of prodauctData; let i=index">
+
+        <td><img src="{{prodauctData.image}} " alt="" srcset=""></td>
+        <td>{{ prodauctData.title}}</td>
+        <td>{{ prodauctData.category}}</td>
+        <td>{{ prodauctData.price}} L.E</td>
+        <th scope="col">
+          <div>
+            <button (click)="UpdateProduct(prodauctData)" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Update
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="" [formGroup]="formProduect">
+
+                      <div class="d-flex justify-content-between">
+                        <div class="form-group">
+                          <label class="fw-bolder">Title</label>
+                          <input formControlName="title" type="text" name="" id="" class="form-control" placeholder=""
+                            aria-describedby="helpId">
+      
+                        </div>
+                        <div class="form-group">
+                          <label class="fw-bolder">Price</label>
+                          <input formControlName="price" type="number" name="" id="" class="form-control" placeholder=""
+                            aria-describedby="helpId">
+                        </div>
+                        <div style="margin-top: -10px !important;" class="form-group w-25">
+                          <label class="fw-bolder">Categories</label>
+                          <select class="mt-2 form-control" (change)="getSelectCategorie($event)">
+                            <option *ngFor="let item of categories"   [selected]="item == select"   value="{{select}}" >{{item}}</option>
+                          </select>
+                        </div>
+      
+                      </div>
+                      <div class="mt-2 d-flex justify-content-between">
+                        <div style="width: 350px !important;" class="my-3 d-flex flex-column  ">
+                          <div>
+                            <label class="fw-bolder">Image</label>
+                            <input class="form-control" (change)="getImagePath($event)" type="file" id="input1" multiple>
+                          </div>
+                          <img  *ngIf="base64" class="mt-3" width="200" height="200" src="{{base64}}"
+                            alt="" srcset="">
+      
+                        </div>
+                        <div class="my-3  w-50">
+                          <label for="exampleFormControlTextarea1" class="form-label fw-bolder">Decoration</label>
+                          <textarea  formControlName="description" class="form-control" id="exampleFormControlTextarea1"
+                            rows="3"></textarea>
+      
+                        </div>
+                      </div>
+
+                    </form>
+                  </div>
+                  <div class="modal-footer"  >
+                    <button type="button" class="btn btn-primary" (click)="UpdatedProduct(prodauctData.id)" >Updated</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </th>
+
+      </tr>
+
+
+    </tbody>
+
+  </table>
+
+</div>

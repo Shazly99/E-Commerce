@@ -1,0 +1,18 @@
+<div class="card  shadow-sm  m-auto py-5 mt-5 overflow-hidden">
+    <div class="row d-flex flex-row justify-content-lg-between">
+
+        <ul class="list-group list-group-flush col-md-7">
+            <li class="list-group-item ms-lg-5"> <b class="text-primary fw-bolder fs-5">Title : </b>{{data.title}} </li>
+            <li class="list-group-item ms-lg-5"> <b class="text-primary fw-bolder fs-5">Category : </b>{{data.category}} </li>
+            <li class="list-group-item ms-lg-5"> <b class="text-primary fw-bolder fs-5">Price : </b>{{data.price}} L.E </li>
+            <li class="list-group-item ms-lg-5"> <b class="text-primary fw-bolder fs-5">Rating : </b>{{data.rating.rate}} </li>
+            <li class="list-group-item ms-lg-5"> <b class="text-primary fw-bolder fs-5">Count : </b>{{data.rating.count}} </li>
+            <li class="list-group-item ms-lg-5"> <b class="text-primary fw-bolder fs-5">Description : </b>{{data.description}}
+            </li>
+        </ul>
+        <div class="col-md-4 me-lg-5">
+            <img class="w-100 card-img-top" src="{{data.image}}" alt="Card image cap">
+
+        </div>
+    </div>
+</div>

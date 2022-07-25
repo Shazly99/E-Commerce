@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg navbar-light position-fixed fixed-top ">
+  <div class="container">
+    <a class="navbar-brand text-white fw-bolder fs-3">Market</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class=" collapse navbar-collapse d-flex justify-content-between  py-1 align-items-center"
+      id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2  d-flex justify-content-between align-items-center mb-lg-0">
+
+
+   
+        <li *ngIf="isLogin"   class="mt-2 nav-item dropdown dropdownTranslate ">
+          <a class="nav-link text-white-50 dropdown-toggle" href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            User
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>         
+              <a class="dropdown-item mt-2  " routerLink="Product">Products</a>
+           </li>
+            <li>
+ 
+              <a class="dropdown-item mt-2  " routerLink="Carts">Carts</a>
+            </li>
+ 
+          </ul>
+        </li>
+        <li *ngIf="isLogin"   class="mt-2 nav-item dropdown dropdownTranslate ">
+          <a class="nav-link text-white-50 dropdown-toggle" href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Admin
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item mt-2  " routerLink="admin">Requests</a>
+            </li>
+            <li>
+              <a class="dropdown-item mt-2  "routerLink="update&add_prodect"> Admin</a>
+            </li>
+            <li>
+              <a class="dropdown-item mt-2  "routerLink="userInfo"> Users Register</a>
+            </li>
+ 
+           </ul>
+        </li>
+
+
+
+
+      </ul>
+      <ul class="navbar-nav  mb-2 mb-lg-0">
+
+
+        <li *ngIf="!isLogin" class="nav-item   ">
+          <a class=" mt-2 nav-link fw-bolder" routerLink="login">Login</a>
+        </li>
+
+        <li *ngIf="!isLogin" class="nav-item ">
+          <a class=" mt-2 nav-link fw-bolder" routerLink="register">Register</a>
+        </li>
+        <li *ngIf="isLogin" class="nav-item ">
+          <a style="cursor: pointer;" (click)="Logout()" class=" mt-2 nav-link fw-bolder">LogOut</a>
+        </li>
+
+
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,52 @@
+<div style="margin-top: 150px !important;" class="container me-auto ">
+    <h1 class="text-center fw-bolder">Login Now</h1>
+ 
+
+    <div *ngIf="error"   class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+        <strong class="fw-bolder">Oops !</strong>  {{error}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <form [formGroup]="LoginForm" (ngSubmit)="SubmitLogin(LoginForm)" >
+ 
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="">Email :</label>
+            <input formControlName="email" type="email" class="form-control" name="" id="" aria-describedby="helpId"placeholder="Enter Your email...">
+            <div *ngIf="LoginForm.get('email')?.errors!=null && LoginForm.get('email')?.touched" >
+                <div *ngIf="LoginForm.get('email')?.errors?.['required']" class="alert alert-primary alert-dismissible fade show mt-2" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <strong>Error in Email!</strong>is required.
+                </div>
+                <div *ngIf="LoginForm.get('email')?.errors?.['email']" class="alert alert-primary alert-dismissible fade show mt-2" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <strong>Error in Email!</strong> is not valid.
+                </div>
+ 
+            </div>
+
+        </div>
+        <!-- password -->
+        <div class="form-group">
+            <label for="">Password :</label>
+            <input formControlName="password" type="password" class="form-control" name="" id="" aria-describedby="helpId"placeholder="Enter Your password...">
+            <div  *ngIf="LoginForm.get('password')?.errors!=null && LoginForm.get('password')?.touched">
+                <div  *ngIf="LoginForm.get('password')?.errors?.['required']" class="alert alert-primary alert-dismissible fade show mt-2" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <strong>Error in password!</strong>is required.
+                </div>
+                <div  *ngIf="LoginForm.get('password')?.errors?.['pattern']"  class="alert alert-primary alert-dismissible fade show mt-2" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <strong>Error in password!</strong> is not valid.
+                </div>
+    
+            </div>
+
+        </div>
+
+
+        <button [disabled]="LoginForm.invalid" class="btn mt-3 btn-primary">Login</button>
+
+    </form>
+
+</div>
